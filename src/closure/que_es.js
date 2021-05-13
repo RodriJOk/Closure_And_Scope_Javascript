@@ -51,3 +51,27 @@ operacionDeMonedas(10)
 //1_ Hay una funcion anidada dentro de otra funcion. En este caso: contadorDeMonedas esta dentro de tarroDeMonedas.
 //2_ Tenemos a la variable monedaInicial que se encuentra en otro scope, pero es utilizado por la funcion anidada. 
 //3_ Se invoca a la funcion desde un scope mas global. 
+
+//Algo que tambien debemos de saber es que la clausura no solo tiene que ver con el ambito(scope), sino tambien con el contexto de ejecucion (environment)
+//Vamos a ver como se relacionan estos dos conceptos, introsuciendo uno nuevo: El Entorno lexico.
+//Aprender sobre los entornos lexicos nos va a ayudar a entender como el motor de Javascript ejecuta los programas
+
+//Veamos un ejemplo mas sobre Closure. 
+
+
+function crearContador (){
+    //Esta variable esta unida por un vinculo inseparable. Ya que cuando se ejecuta la funcion incrementarContador esta accede a el valor que tiene la variable contador en el momento es que es ejecutada. 
+    let contador = 0
+    return function incrementarContador (){
+        contador ++
+        return contador
+    };
+}
+
+const contador1 = crearContador()
+
+console.log(contador1())//1
+console.log(contador1())//2
+console.log(contador1())//3
+console.log(contador1())//4
+console.log(contador1())//5
