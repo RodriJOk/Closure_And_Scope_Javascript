@@ -53,7 +53,7 @@ operacionDeMonedas(10)
 //3_ Se invoca a la funcion desde un scope mas global. 
 
 //Algo que tambien debemos de saber es que la clausura no solo tiene que ver con el ambito(scope), sino tambien con el contexto de ejecucion (environment)
-//Vamos a ver como se relacionan estos dos conceptos, introsuciendo uno nuevo: El Entorno lexico.
+//Vamos a ver como se relacionan estos dos conceptos, introduciendo uno nuevo: El Entorno lexico (o Lexical Environment en ingles).
 //Aprender sobre los entornos lexicos nos va a ayudar a entender como el motor de Javascript ejecuta los programas
 
 //Veamos un ejemplo mas sobre Closure. 
@@ -75,3 +75,12 @@ console.log(contador1())//2
 console.log(contador1())//3
 console.log(contador1())//4
 console.log(contador1())//5
+
+//Ahora imaginemos que creo una nueva constante con el nombre de contador 2, pero que invoca a la funcion crear contador. ¿Que pasaria? 
+//Por ejemplo: 
+
+const contador2 = crearContador()
+
+//Las clausuras no solo tienen que ver con el scope, sino tambien con el contexto de ejecucion, que se van creando cada vez que se ejecuta una funcion. 
+
+//Es por eso que podemos decir que contador 1, ni se va a enterar de que contador 2 existe. 
